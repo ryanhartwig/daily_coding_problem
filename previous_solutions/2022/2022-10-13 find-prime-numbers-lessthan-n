@@ -1,0 +1,55 @@
+/*
+Create an array of all integers from 2 to n
+Set all elements of the array to true
+Starting with 2, iterate through the array. If the current element is true, it is still considered prime. Since we know that all multiples of that number are NOT prime, iterate through all multiples of that number up to n and set them equal to false
+Change the current element to the next non-false index.
+Return the corresponding number value for any element still marked as prime (value of true).
+console.log('about to run: ');
+*/
+
+const findPrimes = (number) => {
+  let primes = new Array(number + 1).fill(true);
+  primes[0] = false;
+  primes[1] = false;
+
+  let inc = 2;
+  let index;
+
+  const iterateByInc = (inc) => {
+    for (let i = inc * 2; i <= number; i += inc) {
+      primes[i] = false;
+    }
+  }
+
+  for (; inc < number;) {
+    iterateByInc(inc);
+    index = primes.findIndex((el, i) => i > inc && el === true);
+    
+    if (index === -1) {
+      break;
+    } 
+    inc = index;
+  }
+  return primes.map((el, i) => el ? i : false).filter(el => !!el); 
+} 
+
+// console.log(findPrimes(35));
+
+
+// revised solution
+
+const findPrimesCC = (n) => {
+  const output = new Array(n + 1).fill(true);
+  [output[0], output[1]] = [false, false];
+
+  for (let i = 2; i <= n; i++) {
+    for (let j = i * 2; j <= n; j += i) {
+      output[j] = false;
+    }
+  }
+
+  return output.map((el, i) => el && output[i]).filter(el => !!el);
+}
+
+
+console.log(findPrimesCC(5));

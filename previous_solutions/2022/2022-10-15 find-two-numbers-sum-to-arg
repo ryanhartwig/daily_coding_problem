@@ -1,0 +1,62 @@
+/*
+
+Good morning! Here's your coding interview problem for today.
+
+This problem was recently asked by Google.
+
+Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+
+For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
+
+Bonus: Can you do this in one pass? 
+
+|| for one pass, you would use hash map to store values that you've iterated over as you iterate through the array. after storing the first value, you would take the sum and subtract the element that you're on, and see if that value exists in the map. if it does, you would return that element plus the element you're on in the iteration
+
+*/
+
+/* 
+i / o
+[10, 15, 3, 7]      k = 17      => true
+[1, 3, 8, 16, 35]   k = 24      => true
+[1, 3, 8 , 12]      k = 99      => false
+
+
+// pseudo  KISS
+for each element in array) (i)
+  for each subsequent element in array starting at index of current element + 1 (j)
+    compare sum of element at indeces i + j === k 
+    if true return true
+return false
+
+less than O(n*n) runtime (not sure of exact runtime)
+
+*/
+
+const hasSum = (numbers, comparator) => {
+  for (let i = 0; i < numbers.length -1; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[i] + numbers[j] === comparator) return true;
+    }
+  }
+  return false;
+}
+
+// console.log(hasSum([10, 15, 3, 7], 17));
+// console.log(hasSum([1, 3, 8, 16, 35], 24));
+// console.log(hasSum([1, 3, 8 , 12], 99));
+
+
+
+// O(n) 
+const hasSumOnePass = (numbers, comparator) => {
+  const values = new Set();
+
+  return numbers.some((el) => {
+    values.add(el);
+    return values.has(comparator - el);
+  });
+}
+
+console.log(hasSumOnePass([10, 15, 3, 7], 17));
+console.log(hasSumOnePass([1, 3, 8, 16, 35], 24));
+console.log(hasSumOnePass([1, 3, 8 , 12], 99));

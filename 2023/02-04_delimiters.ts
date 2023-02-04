@@ -13,13 +13,15 @@
   */
 
   const reverse = (str: string): string => {
+    if (!str.length) return '';
+    
     const delimiters: string[] = [];
     const words: string[] = [];
 
     let left = 0;
     for (let i = 0; i < str.length; i++) {
 
-      // Is delimiter
+      // Current character is a delimiter
       if (str[i].toUpperCase() === str[i].toLowerCase()) {
         const lastWord = str.slice(left, i);
         left = i + 1;
@@ -49,5 +51,6 @@
   
   console.log(reverse('hello/world:here'));
   console.log(reverse('hello//world:here'));
-  
+
 })()
+

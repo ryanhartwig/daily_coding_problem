@@ -36,11 +36,10 @@
             freq[j]--;
           }
         }
-      } 
+      } else {
         freq[char]++;
-      
+      }
     }
-    
 
     return Math.max(maxLength, s.length - windowStart)
   }

@@ -46,7 +46,6 @@
   */
   
   function jump(nums: number[]): number {
-
     const minSteps: number[] = Array(nums.length).fill(Infinity);
     minSteps[0] = 0;
 

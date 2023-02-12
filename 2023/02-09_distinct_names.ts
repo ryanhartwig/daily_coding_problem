@@ -62,7 +62,6 @@ return output
       map.forEach((count, char) => {
         const swapped = `${char}${current.slice(1)}`;
         if (names.has(swapped)) return;
-        names.add(swapped);
         distinctNames += count;
       });
     }
@@ -70,7 +69,7 @@ return output
     return distinctNames;
   }
   
-  console.log(distinctNames(["aaa","baa","caa","bbb","cbb","dbb"])) //["coffee","donuts","time","toffee"]
+  console.log(distinctNames(["aaa","baa","caa","bbb","cbb","dbb"])) // 
   console.log(distinctNames(["coffee","donuts","time","toffee"])) //
   
   

@@ -35,6 +35,11 @@ export class DirectedGraph {
     this.size++;
   }
 
+  addVertices(v: Vertex[]) {
+    this.vertices.push(...v);
+    this.size += v.length;
+  }
+
   addEdge(v1: Vertex, v2: Vertex) {
     v1.addEdge(v2);
   }

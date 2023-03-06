@@ -46,6 +46,7 @@ class PeekableInterface(object):
     }
   }
 
+  // Wrapper iterator extending iterator class
   class PeekableInterface<T> extends Iterator<T> {
     constructor(arr: T[]) {
       super(arr);

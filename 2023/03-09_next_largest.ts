@@ -39,6 +39,8 @@ Follow-up: If you can preprocess the array, can you do this in constant time?
     return current;
   }
 
-  console.log(nextLargest([7,12,3,2,6], 0));
+  console.log(nextLargest([5,12,3,2,6], 0)); // 4
+  console.log(nextLargest([4, 1, 3, 5, 6], 0)) // 3
+  console.log(nextLargest([4, 1, 3, 5, 6], 2)) // 0
 
 })()

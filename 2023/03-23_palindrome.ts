@@ -16,13 +16,7 @@ For example, carrace should return true, since it can be rearranged to form race
     const chars = new Set();
     
     for (let i = 0; i < str.length; i++) {
-      let existing = chars.has(str[i]);
-
-      if (existing) {
-        chars.delete(str[i]);
-      } else {
-        chars.add(str[i]);
-      }
+      chars.delete(str[i]) || chars.add(str[i]);
     }
 
     return chars.size <= 1;

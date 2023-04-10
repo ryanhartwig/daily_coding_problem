@@ -1,3 +1,4 @@
+// Singly Linked List and Node with typeable data stores
 export interface Node<T> {
   data: T,
   next: Node<T> | null,
@@ -18,7 +19,7 @@ export class Node<T> {
     this.next = n;
   }
 }
-
+ 
 export class SinglyLinkedList<T> {
   constructor() {
     this.head = null;

@@ -35,24 +35,25 @@ iterate through list in reverse order
 
     for (let i = list.length - 2; i >= 0; i--) {
       const node = new Node(list[i]);
-      const lastRoot = nodeStack[nodeStack.length - 1]!
+      let lastRoot = nodeStack.pop()!;
 
       if (node.value > lastRoot.value) {
         lastRoot.right = node;
+
+        nodeStack.push(lastRoot);
         nodeStack.push(node);
         continue;
       }
 
       if (node.value < lastRoot.value) {
-        let lastValidRoot = nodeStack.pop()!;
         let prevRoot = nodeStack[nodeStack.length - 1];
 
         while (prevRoot && prevRoot.value > node.value) {
-          lastValidRoot = nodeStack.pop()!;
+          lastRoot = nodeStack.pop()!;
           prevRoot = nodeStack[nodeStack.length - 1];
         }
 
-        lastValidRoot.left = node;
+        lastRoot.left = node;
         nodeStack.push(node);
         continue;
       }
@@ -62,6 +63,8 @@ iterate through list in reverse order
   }
 
   const tree = construct([2,4,3,8,7,5]);
+  const tree2 = construct([3,5,7,6,4,11,13,12,18,15,10]);
   console.log(tree.root)
-  
+  console.log(tree2.root)
+
 })()

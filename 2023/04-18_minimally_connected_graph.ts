@@ -67,21 +67,20 @@ travel down each possible path
       return destinations.every(dest => 
         dfs(
           dest, 
-          graphMap.get(dest)!.filter(v => v !== firstTraversal), 
+          graphMap.get(dest)!.filter(v => v !== node), 
           [...visited, node],
         )
       );
     }
 
-
-    const firstTraversal = graph[0][0];
-    const destinations = graphMap.get(firstTraversal)!;
+    const starting = graph[0][0];
+    const destinations = graphMap.get(starting)!;
 
     return destinations.every(node => 
       dfs(
         node, 
-        graphMap.get(node)!.filter(v => v !== firstTraversal), 
-        [firstTraversal],
+        graphMap.get(node)!.filter(v => v !== starting), 
+        [starting],
       )
     );
     
@@ -96,7 +95,12 @@ travel down each possible path
     [6, 3]
   ]));
 
+  console.log(minimallyConnected([
+    [1, 2, 3],
+    [2, 1, 4],
+    [4, 2],
+    [3, 1, 5],
+    [5, 3]
+  ]));
+
 })()
-
-
-// Incomplete

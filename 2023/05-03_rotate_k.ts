@@ -17,5 +17,4 @@ Given an array and a number k that's smaller than the length of the array, rotat
   }
   
   console.log(rotate([1,2,3], 2));
-  
 })()

@@ -25,8 +25,6 @@ if ind >= length of arr - length of working
   const largestSubset = (arr: number[]) => {
     let largestSubset: number[] = [];
 
-          
-
     for (let i = 0; i < arr.length; i++) {
       if (i >= arr.length - largestSubset.length) break;
       let current = arr[i];

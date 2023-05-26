@@ -26,7 +26,7 @@ For example, given the numbers [42, 56, 14], return 14.
     return greatest;
   }
 
-  console.log(greatestCommonDenom([42,56,14]));
+  console.log(greatestCommonDenom([42,56,14])); // 14
   
   
 })()

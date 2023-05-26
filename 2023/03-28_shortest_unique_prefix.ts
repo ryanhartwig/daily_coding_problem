@@ -44,5 +44,5 @@ f
   
   
   console.log(shortestUnique(['dog', 'cat', 'apple', 'apricot', 'fish']));
-  //  d c app apr f
+  // d c app apr f
 })()

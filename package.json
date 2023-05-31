@@ -6,7 +6,6 @@
   "author": "Ryan1431 <ryan1431@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/uuid": "^9.0.0",
-    "uuid": "^9.0.0"
+    "@types/uuid": "^9.0.0"
   }
 }

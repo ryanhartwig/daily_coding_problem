@@ -38,7 +38,7 @@ store each triplet as hashed string in set
 */
 
 // Brute force
-function threeSum(nums: number[]): number[][] {
+function threeSumBrute(nums: number[]): number[][] {
   const threeSums = new Set<string>();
   
   for(let i = 0; i < nums.length - 2; i++) {
@@ -52,11 +52,38 @@ function threeSum(nums: number[]): number[][] {
     }
   }
 
-  console.log(threeSums);
-
   return [...threeSums].map(s => s.split('%').map(s => Number(s)));
 };
 
+
+function threeSum(nums: number[]): number[][] {
+  const threeSums: number[][] = [];
+  const sorted = [...nums].sort((a, b) => a - b);
+  let anchor = 0; 
+
+  while (anchor < sorted.length - 2) {
+    let aValue = sorted[anchor];
+    if (aValue > 0) break;
+
+    let left = anchor + 1, right = sorted.length - 1;
+    let sum = 0 - sorted[anchor];
+
+    while (left < right) {
+      let lValue = sorted[left], rValue = sorted[right], aValue = sorted[anchor];
+      if (lValue + rValue > sum) {
+        while (rValue === sorted[right]) right--;
+      } else if (sorted[left] + sorted[right] < sum) {
+        while (lValue === sorted[left]) left++;
+      } else {
+        threeSums.push([lValue, rValue, aValue]);
+        while (lValue === sorted[left]) left++;
+      }
+    }
+
+    while (aValue === sorted[anchor]) anchor++;
+  }
+  return threeSums;
+};
+
 console.log(threeSum([-1,0,1,2,-1,-4]));
-console.log(threeSum([0, 1, 1]));
-console.log(threeSum([0, 0, 0]));
+console.log(threeSum([0,0,0,0]));
